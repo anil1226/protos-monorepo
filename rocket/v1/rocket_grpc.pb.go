@@ -63,16 +63,15 @@ func (c *rocketServiceClient) DeleteRocket(ctx context.Context, in *DeleteRocket
 }
 
 // RocketServiceServer is the server API for RocketService service.
-// All implementations must embed UnimplementedRocketServiceServer
+// All implementations should embed UnimplementedRocketServiceServer
 // for forward compatibility
 type RocketServiceServer interface {
 	GetRocket(context.Context, *GetRocketRequest) (*GetRocketResponse, error)
 	AddRocket(context.Context, *AddRocketRequest) (*AddRocketResponse, error)
 	DeleteRocket(context.Context, *DeleteRocketRequest) (*DeleteRocketResponse, error)
-	mustEmbedUnimplementedRocketServiceServer()
 }
 
-// UnimplementedRocketServiceServer must be embedded to have forward compatible implementations.
+// UnimplementedRocketServiceServer should be embedded to have forward compatible implementations.
 type UnimplementedRocketServiceServer struct {
 }
 
@@ -85,7 +84,6 @@ func (UnimplementedRocketServiceServer) AddRocket(context.Context, *AddRocketReq
 func (UnimplementedRocketServiceServer) DeleteRocket(context.Context, *DeleteRocketRequest) (*DeleteRocketResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRocket not implemented")
 }
-func (UnimplementedRocketServiceServer) mustEmbedUnimplementedRocketServiceServer() {}
 
 // UnsafeRocketServiceServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to RocketServiceServer will
