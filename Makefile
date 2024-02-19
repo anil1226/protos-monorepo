@@ -1,2 +1,2 @@
 build:
-	protoc --proto_path=rocket --go_out=rocket --go_opt=paths=source_relative v1/rocket.proto
+	protoc --go-grpc_out=. --go-grpc_opt=paths=source_relative  .\rocket\v1\rocket.proto
